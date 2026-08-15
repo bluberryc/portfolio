@@ -41,7 +41,7 @@ const projects = [
 
   {
     id: 2,
-    title: '9th Anniversary Lottery System',
+    title: 'Discord Community Event',
     product: 'Halpie Bot',
     category: 'professional',
     type: 'Event System',
@@ -290,6 +290,7 @@ function ProjectModal({ project, onClose }) {
 function App() {
   const [projectCategory, setProjectCategory] = useState('professional');
   const [selectedProject, setSelectedProject] = useState(null);
+  const [discordCopied, setDiscordCopied] = useState(false);
 
   const visibleProjects = projects.filter(
     (project) => project.category === projectCategory,
@@ -542,6 +543,22 @@ function App() {
             >
               GitHub
             </a>
+
+            <button
+              className="contact-discord"
+              onClick={async () => {
+                await navigator.clipboard.writeText('blueberryfrfr');
+                setDiscordCopied(true);
+                setTimeout(() => {
+                  setDiscordCopied(false);
+                }, 2000);
+              }
+            }
+              title="Copy Discord Username"
+            >
+              {discordCopied ? 'Copied!' : 'Discord'}
+            </button>
+
           </div>
         </section>
       </main>
